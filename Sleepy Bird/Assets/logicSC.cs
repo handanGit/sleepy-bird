@@ -26,7 +26,6 @@ public class logicSC : MonoBehaviour
 
     public void gameOver()
     {
-
         gameOverScreen.SetActive(true);
         Time.timeScale = 0f;
     }
