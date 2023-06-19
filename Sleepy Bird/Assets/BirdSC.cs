@@ -6,12 +6,14 @@ public class BirdSC : MonoBehaviour
 {
     public Rigidbody2D birdRigidBody;
     public float flapStrenght;
+    public bool birdIsAlive = true;
+    //public GameObject birdShowcase;
+    public GameObject CliskShowcase;
     public logicSC logic;
     public movePipeSC pipe;
-    public FadeSC fade;
     public GroundScript ground;
     public pipeSpawnerSC pipeSpawn;
-    public bool birdIsAlive = true;
+    
     [SerializeField] public float tiltingSpeed = 10f;
     
 
@@ -24,7 +26,6 @@ public class BirdSC : MonoBehaviour
         pipe = GameObject.FindGameObjectWithTag("pipe").GetComponent<movePipeSC>();
         pipeSpawn = GameObject.FindGameObjectWithTag("pipeSpawner").GetComponent<pipeSpawnerSC>();
         //ground = GameObject.FindGameObjectWithTag("Ground").GetComponent<GroundScript>();
-        //fade = GameObject.FindGameObjectWithTag("fade").GetComponent<FadeSC>();
     }
 
     // Update is called once per frame
@@ -34,6 +35,9 @@ public class BirdSC : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && birdIsAlive)
         {
             birdRigidBody.velocity = Vector2.up * flapStrenght;
+            
+            CliskShowcase.SetActive(false);
+            //birdShowcase.SetActive(false);
         }
         
     }
@@ -42,6 +46,7 @@ public class BirdSC : MonoBehaviour
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.Euler(0, 0, birdRigidBody.velocity.y * tiltingSpeed);
+        
     }
 
     //trigger game over screen after collide with pipe

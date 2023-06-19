@@ -9,6 +9,7 @@ public class logicSC : MonoBehaviour
     public int playerScore;
     public Text scoreText;
     public GameObject gameOverScreen;
+    
 
     [ContextMenu("increase score")]
     public void addScore(int scoreToAdd)
@@ -22,6 +23,8 @@ public class logicSC : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
         Debug.Log("Game Restarted");
+        
+        
     }
 
     public void gameOver()
