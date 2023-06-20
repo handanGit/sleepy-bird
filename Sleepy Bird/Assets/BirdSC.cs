@@ -8,7 +8,7 @@ public class BirdSC : MonoBehaviour
     public float flapStrenght;
     public bool birdIsAlive = true;
     //public GameObject birdShowcase;
-    public GameObject CliskShowcase;
+    
     public logicSC logic;
     public movePipeSC pipe;
     public GroundScript ground;
@@ -36,7 +36,7 @@ public class BirdSC : MonoBehaviour
         {
             birdRigidBody.velocity = Vector2.up * flapStrenght;
             
-            CliskShowcase.SetActive(false);
+            
             //birdShowcase.SetActive(false);
         }
         
