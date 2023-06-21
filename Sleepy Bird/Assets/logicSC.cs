@@ -19,7 +19,7 @@ public class logicSC : MonoBehaviour
     private void Start()
     {
         HighScoreTX.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
-        updateHighScore();
+        //updateHighScore();
     }
     public void addScore(int scoreToAdd)
     {
@@ -47,6 +47,12 @@ public class logicSC : MonoBehaviour
 
     public void gameOver()
     {
+        if (playerScore > PlayerPrefs.GetInt("HighScore"))
+        {
+            PlayerPrefs.SetInt("HighScore", playerScore);
+            HighScoreTX.text = playerScore.ToString();
+        }
+
         APscoreText.SetActive(false);
         scoreTextOver.text = playerScore.ToString();
         gameOverScreen.SetActive(true);
