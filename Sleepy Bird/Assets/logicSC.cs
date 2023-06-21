@@ -15,6 +15,7 @@ public class logicSC : MonoBehaviour
     public GameObject APscoreText;
 
     [ContextMenu("increase score")]
+    [ContextMenu("HighScore")]
 
     private void Start()
     {
@@ -58,6 +59,16 @@ public class logicSC : MonoBehaviour
         gameOverScreen.SetActive(true);
         CliskShowcase.SetActive(false);
         Time.timeScale = 0f;
+    }
 
+    public void resetHighScore()
+    {
+        PlayerPrefs.SetInt("HighScore", 0);
+    }
+
+    public void openPortovolio()
+    {
+        Application.OpenURL("https://drive.google.com/drive/folders/19IYx30TtUNG2TVZE4pixT3wyAJDXW7p9?usp=sharing");
+        Debug.Log("Open external link(portovolio)");
     }
 }
