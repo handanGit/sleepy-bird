@@ -343,3 +343,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic: {fileID: 0}
+  ScoreSFX: {fileID: 7320237094957593906, guid: 8b4fe5da9a060ee45a3e63de5f43122c, type: 3}

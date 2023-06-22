@@ -7,8 +7,10 @@ public class BirdSC : MonoBehaviour
     public Rigidbody2D birdRigidBody;
     public float flapStrenght;
     public bool birdIsAlive = true;
+    public AudioSource flapSFX;
+    public AudioSource hitSFX;
     //public GameObject birdShowcase;
-    
+
     public logicSC logic;
     public movePipeSC pipe;
     public GroundScript ground;
@@ -35,7 +37,7 @@ public class BirdSC : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && birdIsAlive)
         {
             birdRigidBody.velocity = Vector2.up * flapStrenght;
-            
+            flapSFX.Play();
             
             //birdShowcase.SetActive(false);
         }
@@ -55,6 +57,7 @@ public class BirdSC : MonoBehaviour
         //fade.fadeScreen();
         logic.gameOver();
         birdIsAlive = false;
+        hitSFX.Play();
         Debug.Log("Game Stopped");
     }
 }

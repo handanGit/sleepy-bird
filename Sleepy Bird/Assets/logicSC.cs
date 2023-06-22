@@ -10,6 +10,8 @@ public class logicSC : MonoBehaviour
     public Text scoreText;
     public Text scoreTextOver;
     public Text HighScoreTX;
+    public AudioSource restartSFX;
+    public AudioSource ScoreSFX;
     public GameObject gameOverScreen;
     public GameObject CliskShowcase;
     public GameObject APscoreText;
@@ -27,6 +29,7 @@ public class logicSC : MonoBehaviour
         playerScore = playerScore + scoreToAdd;
         scoreText.text = playerScore.ToString();
         CliskShowcase.SetActive(false);
+        ScoreSFX.Play();
     }
 
     public void updateHighScore()
@@ -39,9 +42,11 @@ public class logicSC : MonoBehaviour
     }
     public void restartGame()
     {
+        restartSFX.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         APscoreText.SetActive(true);
         Time.timeScale = 1f;
+        
         Debug.Log("Game Restarted");
 
     }
