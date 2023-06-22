@@ -27,7 +27,6 @@ public class BirdSC : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("logic").GetComponent<logicSC>();
         pipe = GameObject.FindGameObjectWithTag("pipe").GetComponent<movePipeSC>();
         pipeSpawn = GameObject.FindGameObjectWithTag("pipeSpawner").GetComponent<pipeSpawnerSC>();
-        //ground = GameObject.FindGameObjectWithTag("Ground").GetComponent<GroundScript>();
     }
 
     // Update is called once per frame
@@ -38,9 +37,16 @@ public class BirdSC : MonoBehaviour
         {
             birdRigidBody.velocity = Vector2.up * flapStrenght;
             flapSFX.Play();
-            
             //birdShowcase.SetActive(false);
         }
+
+        //if (transform.position.y > 5)
+        //{
+        //    logic.gameOver();
+        //    birdIsAlive = false;
+        //    hitSFX.Play();
+        //    Debug.Log("Game Stopped");
+        //}
         
     }
 
@@ -48,7 +54,6 @@ public class BirdSC : MonoBehaviour
     private void FixedUpdate()
     {
         transform.rotation = Quaternion.Euler(0, 0, birdRigidBody.velocity.y * tiltingSpeed);
-        
     }
 
     //trigger game over screen after collide with pipe
