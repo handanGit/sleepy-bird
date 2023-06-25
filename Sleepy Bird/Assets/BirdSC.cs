@@ -6,12 +6,16 @@ public class BirdSC : MonoBehaviour
 {
     public Rigidbody2D birdRigidBody;
     public float flapStrenght;
+    public bool birdIsAlive = true;
+    public AudioSource flapSFX;
+    public AudioSource hitSFX;
+    //public GameObject birdShowcase;
+
     public logicSC logic;
     public movePipeSC pipe;
-    public FadeSC fade;
     public GroundScript ground;
     public pipeSpawnerSC pipeSpawn;
-    public bool birdIsAlive = true;
+    
     [SerializeField] public float tiltingSpeed = 10f;
     
 
@@ -23,8 +27,6 @@ public class BirdSC : MonoBehaviour
         logic = GameObject.FindGameObjectWithTag("logic").GetComponent<logicSC>();
         pipe = GameObject.FindGameObjectWithTag("pipe").GetComponent<movePipeSC>();
         pipeSpawn = GameObject.FindGameObjectWithTag("pipeSpawner").GetComponent<pipeSpawnerSC>();
-        //ground = GameObject.FindGameObjectWithTag("Ground").GetComponent<GroundScript>();
-        //fade = GameObject.FindGameObjectWithTag("fade").GetComponent<FadeSC>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,17 @@ public class BirdSC : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && birdIsAlive)
         {
             birdRigidBody.velocity = Vector2.up * flapStrenght;
+            flapSFX.Play();
+            //birdShowcase.SetActive(false);
         }
+
+        //if (transform.position.y > 5)
+        //{
+        //    logic.gameOver();
+        //    birdIsAlive = false;
+        //    hitSFX.Play();
+        //    Debug.Log("Game Stopped");
+        //}
         
     }
 
@@ -50,6 +62,7 @@ public class BirdSC : MonoBehaviour
         //fade.fadeScreen();
         logic.gameOver();
         birdIsAlive = false;
+        hitSFX.Play();
         Debug.Log("Game Stopped");
     }
 }

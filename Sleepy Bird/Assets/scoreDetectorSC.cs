@@ -5,6 +5,7 @@ using UnityEngine;
 public class scoreDetectorSC : MonoBehaviour
 {
     public logicSC logic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class scoreDetectorSC : MonoBehaviour
         if (collision.gameObject.layer == 3)
         {
             logic.addScore(1);
+            
         }
     }
 }
